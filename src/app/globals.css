@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+img {
+  width: 100%;
+  height: auto;
+  transition: 0.3s ease-in all;
+  -webkit-transition: 0.3s ease-in all;
+  -moz-transition: 0.3s ease-in all;
+  -o-transition: 0.3s ease-in all;
+}
+
+img:hover {
+  scale: 102%;
+}
