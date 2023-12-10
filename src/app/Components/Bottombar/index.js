@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Bottombar = () => {
   return (
-    <header className="flex flex-col md:flex-row md:justify-between p-5 font-bold">
+    <header className="flex flex-col md:flex-row md:justify-between p-5 font-bold w-full shadow-lg fixed bg-white z-10">
       <Link href="/" className="self-center md:self-start text-2xl">
         Wayang Kaca
       </Link>

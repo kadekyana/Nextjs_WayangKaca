@@ -13,7 +13,7 @@ const Box = () => {
             <Link href="/Product">Product</Link>
           </button>
           <button className="px-8 py-2 border-2 ml-2 mb-2 rounded-md bg-indigo-500 text-white font-bold">
-            <Link href="/Product">History</Link>
+            <Link href="/History">History</Link>
           </button>
         </div>
       </div>
