@@ -3,7 +3,7 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        hostname: "cdn.myanimelist.net",
+        hostname: "127.0.0.1",
       },
     ],
   },
