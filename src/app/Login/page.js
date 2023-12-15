@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Link from "next/link"
 
 const Login = () => {
     return (
@@ -15,12 +16,13 @@ const Login = () => {
                             <label htmlFor="password"></label>
                             <input type="text" id="password" placeholder="Password" className="border-2 border-current w-72 p-2 rounded"/>
                         </div>
-                        <button type="submit" className="w-full mt-5 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Login</button>
-                        <button type="submit" className="ml-auto mt-3 float-right text-sm">Daftar Sekarang</button> 
+                        <button type="submit" className="w-full mt-5 bg-blue-500 text-white p-2 rounded hover:bg-blue-600"><Link href="/">Login</Link></button>
+                        <Link href="/Register" className="ml-auto mt-3 float-right text-sm">Daftar Sekarang</Link>
+
                     </form>
                 </div>
-                <div>
-                    <Image src="/OIP.jpg" alt="" width={250} height={250} className="h-96 w-96 rounded"/>
+                <div className=" ">
+                    <Image src="/OIP.jpg" alt="" width={250} height={250} className="h-96 w-96 rounded p-2"/>
                 </div>
             </div>
         </div>

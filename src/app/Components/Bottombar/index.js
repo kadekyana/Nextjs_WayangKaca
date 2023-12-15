@@ -13,12 +13,12 @@ const Bottombar = () => {
         <Link href="Product" className="px-2">
           Product
         </Link>
-        <Link href="/history" className="px-2">
+        <Link href="/History" className="px-2">
           History
         </Link>
       </div>
       <div className="self-center">
-        <Link href="/login" className="px-2">
+        <Link href="/Login" className="px-2">
           Login
         </Link>
         <Link href="/keranjang" className="px-2">

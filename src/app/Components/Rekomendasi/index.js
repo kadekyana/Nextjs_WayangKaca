@@ -8,7 +8,7 @@ const Rekomendasi = ({ name, images, id, about }) => {
       <h3 className="font-bold md:text-xl sm:text-md text-sm p-3">{name}</h3>
       <p className="md:text-md sm:text-sd text-sm p-3 truncate">{about}</p>
       <button className="px-8 py-2 border-2 ml-2 mb-2 rounded-md bg-indigo-500 text-white font-bold">
-        <Link href={`detail/${id}`}>Detail</Link>
+        <Link href={`Detail/${id}`}>Detail</Link>
       </button>
     </div>
   );
