@@ -21,7 +21,7 @@ const Bottombar = () => {
         <Link href="/Login" className="px-2">
           Login
         </Link>
-        <Link href="/keranjang" className="px-2">
+        <Link href="/Keranjang" className="px-2">
           Keranjang
         </Link>
       </div>
