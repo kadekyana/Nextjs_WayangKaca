@@ -1,11 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
-
   const [password, setPassword] = useState("");
+  const route = useRouter();
 
   const handleLogin = async () => {
     console.log(username);
@@ -21,6 +22,7 @@ const LoginForm = () => {
 
       if (response.ok) {
         console.log("Login successful");
+        route.push("/");
       } else {
         console.error("Login failed");
       }
