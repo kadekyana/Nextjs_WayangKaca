@@ -5,9 +5,8 @@ import Box from "./Components/Box";
 
 const Home = async () => {
   const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/products`);
-
   const products = await response.json();
-  console.log(products);
+  console.log(products.products);
   return (
     <div>
       <Box />
