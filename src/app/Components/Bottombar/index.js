@@ -10,7 +10,7 @@ const Bottombar = () => {
         <Link href="/" className="px-2">
           Home
         </Link>
-        <Link href="Product" className="px-2">
+        <Link href="/Product" className="px-2">
           Product
         </Link>
         <Link href="/History" className="px-2">
