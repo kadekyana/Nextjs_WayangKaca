@@ -7,6 +7,7 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const route = useRouter();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = async () => {
     console.log(username);
@@ -21,8 +22,13 @@ const LoginForm = () => {
       });
 
       if (response.ok) {
+        const userData = await response.json();
+        if (userData.user.jenis == "admin") {
+          route.push("/AdminPage");
+        } else {
+          route.push("/");
+        }
         console.log("Login successful");
-        route.push("/");
       } else {
         console.error("Login failed");
       }

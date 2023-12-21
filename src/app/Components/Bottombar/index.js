@@ -1,6 +1,30 @@
+"use client";
+import { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 const Bottombar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const route = useRouter();
+  const handleLogout = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/api/logout", {
+        method: "POST",
+        // Add headers or credentials if needed
+      });
+
+      if (response.ok) {
+        console.log("Logout successful");
+        route.push("/");
+        setIsLoggedIn(false);
+      } else {
+        console.error("Logout failed");
+      }
+    } catch (error) {
+      console.error("Error during logout:", error);
+    }
+  };
+
   return (
     <header className="flex flex-col md:flex-row md:justify-between p-5 font-bold w-full shadow-lg fixed bg-white z-10">
       <Link href="/" className="self-center md:self-start text-2xl">
@@ -18,12 +42,20 @@ const Bottombar = () => {
         </Link>
       </div>
       <div className="self-center">
-        <Link href="/Login" className="px-2">
-          Login
-        </Link>
-        <Link href="/Keranjang" className="px-2">
-          Keranjang
-        </Link>
+        {isLoggedIn == true ? (
+          <>
+            <button onClick={handleLogout} className="px-2 cursor-pointer">
+              Logout
+            </button>
+            <Link href="/Keranjang" className="px-2">
+              Keranjang
+            </Link>
+          </>
+        ) : (
+          <Link href="/Login" className="px-2">
+            Login
+          </Link>
+        )}
       </div>
     </header>
   );
