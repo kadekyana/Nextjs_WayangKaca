@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 const Bottombar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const route = useRouter();
   const handleLogout = async () => {
     try {
@@ -14,8 +14,8 @@ const Bottombar = () => {
       });
 
       if (response.ok) {
+        route.refresh();
         console.log("Logout successful");
-        route.push("/");
         setIsLoggedIn(false);
       } else {
         console.error("Logout failed");
@@ -42,7 +42,7 @@ const Bottombar = () => {
         </Link>
       </div>
       <div className="self-center">
-        {isLoggedIn == true ? (
+        {isLoggedIn ? (
           <>
             <button onClick={handleLogout} className="px-2 cursor-pointer">
               Logout

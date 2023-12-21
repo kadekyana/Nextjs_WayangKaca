@@ -4,10 +4,9 @@ import Product from "./Product/page";
 import Box from "./Components/Box";
 
 const Home = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/products`);
-
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/products`, { cache: "no-store" });
   const products = await response.json();
-  console.log(products);
+
   return (
     <div>
       <Box />

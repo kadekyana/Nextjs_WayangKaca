@@ -1,9 +1,10 @@
 import Link from "next/link";
+import TabelUsers from "../AdminKomponen/tabelUsers";
 
 const { default: SideBar } = require("../AdminKomponen/SideBar");
-const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/users`, { cache: "no-store" });
-const data = await response.json();
-console.log(data);
+// const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/admin/users`, { cache: "no-store" });
+// const data = await response.json();
+// console.log(data);
 const UserPage = () => {
   return (
     <div>
@@ -22,10 +23,9 @@ const UserPage = () => {
                   <th className="px-6 py-3 text-left">AKSI</th>
                 </tr>
               </thead>
-              <tbody>
-                {data.users.map((data) => {
+              {/* {data.users.map((data) => {
                   return (
-                    <tr className="border-b">
+                    <tr key={data.id} className="border-b">
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider">1</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider">{data.name}</th>
                       <th className="px-6 py-3 text-left text-xs font-medium text-gray-500  tracking-wider">{data.email}</th>
@@ -37,8 +37,8 @@ const UserPage = () => {
                       </th>
                     </tr>
                   );
-                })}
-              </tbody>
+                })} */}
+              <TabelUsers />
             </table>
           </div>
         </div>

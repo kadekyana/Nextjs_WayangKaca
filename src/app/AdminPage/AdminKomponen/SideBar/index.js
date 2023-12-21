@@ -35,19 +35,19 @@ const SideBar = () => {
         <div className="boeder m-5 flex justify-center">
           <ul className="grid gap-y-10">
             <li>
-              <Link href="../AdminPage" className="flex items-center gap-x-3">
+              <Link href="/AdminPage" className="flex items-center gap-x-3">
                 <BsCardChecklist />
                 <span>Dashboard</span>
               </Link>
             </li>
             <li>
-              <Link href="../AdminPage/UserPage" className="flex items-center gap-x-3">
+              <Link href="/AdminPage/UserPage" className="flex items-center gap-x-3">
                 <BsFileEarmarkPerson />
                 <span>User</span>
               </Link>
             </li>
             <li>
-              <Link href="../AdminPage/Product" className="flex items-center gap-x-3">
+              <Link href="/AdminPage/Product" className="flex items-center gap-x-3">
                 <BsMinecartLoaded />
                 <span>Products</span>
               </Link>
