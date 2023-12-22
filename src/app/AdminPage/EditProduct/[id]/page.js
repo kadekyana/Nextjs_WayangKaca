@@ -41,18 +41,21 @@ const EditProduct = ({ params: { id } }) => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+
+    const formDataToSend = new FormData();
+    Object.entries(formData).forEach(([key, value]) => {
+      formDataToSend.append(key, value);
+    });
+
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/admin/update/${id}`, {
-        mode: "no-cors",
         method: "POST",
-        body: JSON.stringify({
-          formData,
-        }),
+        body: formDataToSend,
       });
 
       if (response.ok) {
         console.log("Product updated successfully");
+        router.push("/AdminPage/Product");
       } else {
         console.error("Error updating product");
       }
@@ -62,11 +65,12 @@ const EditProduct = ({ params: { id } }) => {
   };
 
   const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, value, files } = e.target;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: files ? files[0] : value,
+    }));
   };
 
   return (

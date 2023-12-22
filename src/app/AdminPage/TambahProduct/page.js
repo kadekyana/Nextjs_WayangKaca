@@ -1,61 +1,48 @@
-import Link from "next/link"
+"use client";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import FormTambah from "../AdminKomponen/formTambah";
 
-const { default: SideBar } = require("../AdminKomponen/SideBar")
+const { default: SideBar } = require("../AdminKomponen/SideBar");
 
-const TambahProduct = () =>{
-    return (
-        <div>
-            <div className="flex">
-                <SideBar/>
-                <div className="border w-screen">
-                    <form className="border rounded-lg  bg-white m-5 px-10 py-5">
-                        <h1 className=" py-3">TAMBAH PRODUCT</h1>
-                        <div className="py-3">
-                            <label htmlFor="nama">Nama</label>
-                            <div className="mt-3">
-                                <input type="text" id="nama" placeholder="Nama Product" className="border rounded-md w-96 rounded py-1.5 px-3"></input>
-                            </div>
-                        </div>
-                        <div className="py-3">
-                            <label htmlFor="deskripsi">Deskripsi</label>
-                            <div className="mt-3">
-                                <textarea id="deskripsi" placeholder="Deskripsi Product" className="border rounded-md w-full rounded py-1.5 px-3"></textarea>
-                            </div>
-                        </div>
+const TambahProduct = () => {
+  const router = useRouter();
 
-                        <div className="grid grid-cols-2">
-                            <div className="py-3">
-                                <label htmlFor="harga">Harga</label>
-                                <div className="relative mt-3">
-                                    <div className="pointer-events-none absolute inset-y-0 flex items-center pl-3">
-                                        <span>Rp.</span>
-                                    </div>
-                                    <input type="text" id="nama" className="border rounded-md w-96 rounded py-1.5 pl-10"></input>
-                                </div>
-                            </div>
-                            <div className="py-3">
-                                <label htmlFor="nama">Stok</label>
-                                <div className="mt-3">
-                                    <input type="text" id="nama" placeholder="Jumlah Stok" className="border rounded-md w-96 rounded py-1.5 px-3"></input>
-                                </div>
-                            </div>
-                        </div>
+  const handleSubmit = async (formData) => {
+    try {
+      const form = new FormData();
 
-                        <div className="py-3">
-                            <label htmlFor="nama">Gambar</label>
-                            <div className="mt-3">
-                                <input type="file" id="gambar" placeholder="Nama Product" className="border rounded-md rounded py-1.5 px-3 w-full" required></input>
-                            </div>
-                        </div>
-                        <div className="my-5">
-                            <Link href="" className="rounded bg-blue-500 p-3 text-white px-8">Tambah Product</Link>
-                        </div>
-                        
-                    </form>
-                </div>
-            </div>
+      // Append each field to the form data
+      Object.keys(formData).forEach((key) => {
+        form.append(key, formData[key]);
+      });
+
+      const response = await fetch("http://127.0.0.1:8000/api/admin/products/create", {
+        method: "POST",
+        body: form,
+      });
+
+      if (response.ok) {
+        console.log("Product added successfully");
+        router.push("/AdminProduct/Product");
+      } else {
+        console.error("Error adding product");
+      }
+    } catch (error) {
+      console.error("Error during product addition:", error);
+    }
+  };
+
+  return (
+    <div>
+      <div className="flex">
+        <SideBar />
+        <div className="border w-screen">
+          <FormTambah onSubmit={handleSubmit} />
         </div>
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default TambahProduct
+export default TambahProduct;
